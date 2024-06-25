@@ -1,0 +1,65 @@
+class Solution: 
+   
+    #selection sort iterative
+    def selectionSort(self, arr,n):
+        for i in range(n-1):
+            min=i
+            for j in range(i+1,n):
+                if arr[j]<arr[min]:
+                    min=j
+                    
+            if min!=i:
+                arr[i],arr[min]=arr[min],arr[i] 
+        return arr
+
+
+#bubble sort iterative
+
+class Solution:
+    #Function to sort the array using bubble sort algorithm.
+    def bubbleSort(self,arr, n):
+        # code here
+        for i in range(n-1):
+            flag=0
+            for j in range(n-1-i):
+                if arr[j]>arr[j+1]:
+                    arr[j],arr[j+1]=arr[j+1],arr[j]
+                    flag=1
+                    
+            if flag==0:
+                break 
+        return arr
+
+#bubble sort recursive
+arr = list(map(int, input().split()))
+n = len(arr)
+
+def bubblesort(arr, n):
+    if n <= 1:
+        return
+
+    for i in range(n - 1):
+        if arr[i] > arr[i + 1]:
+            arr[i], arr[i + 1] = arr[i + 1], arr[i]
+    
+    bubblesort(arr, n - 1)
+
+bubblesort(arr, n)
+
+#insertion sort
+class Solution:
+    
+        
+    #Function to sort the list using insertion sort algorithm.    
+    def insertionSort(self, alist, n):
+        #code here
+        for i in range(1,n):
+            temp=alist[i]
+            j=i-1
+            while j>=0 and alist[j]>temp:
+                alist[j+1]=alist[j]
+                j-=1
+            alist[j+1]=temp
+
+
+print(arr)
