@@ -1,0 +1,68 @@
+#quicksort algorithm
+class Solution:
+    #Function to sort a list using quick sort algorithm.
+    def quickSort(self,arr,low,high):
+        # code here
+        if low<high:
+            pIndex=self.partition(arr,low,high)
+            self.quickSort(arr,low,pIndex-1)
+            self.quickSort(arr,pIndex+1,high)
+    
+    def partition(self,arr,low,high):
+        # code here
+        pivot=arr[low]
+        i=low
+        j=high
+        
+        while i<j:
+            while arr[i]<=pivot and i<high:
+                i+=1
+            while arr[j]>pivot and j>low:
+                j-=1
+            if i<j:
+                arr[i],arr[j]=arr[j],arr[i]
+                
+        arr[low],arr[j]=arr[j],arr[low]
+        return j
+
+#merge sort algorithm
+
+class Solution:
+    def merge(self,arr, l, m, r): 
+        # code here
+        temp=[0]*(r-l+1)
+        i=l
+        j=m+1
+        k=0
+        
+        while i<=m and j<=r:
+            if arr[i]<=arr[j]:
+                temp[k]=arr[i]
+                i+=1
+                k+=1
+            else:
+                temp[k]=arr[j]
+                j+=1
+                k+=1
+                
+        while i<=m:
+            temp[k]=arr[i]
+            i+=1
+            k+=1
+        while j<=r:
+            temp[k]=arr[j]
+            k+=1
+            j+=1
+        for i in range(l,r+1):
+            arr[i]=temp[i-l]
+        return arr
+        
+        
+    def mergeSort(self,arr, l, r):
+        #code here
+        if l<r:
+            m=l+(r-l)//2
+            self.mergeSort(arr,l,m)
+            self.mergeSort(arr,m+1,r)
+            self.merge(arr,l,m,r)
+
